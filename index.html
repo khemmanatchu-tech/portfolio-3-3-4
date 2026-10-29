@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khemmanat Chueawerachon | Engineering Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Sarabun & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sarabun:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0B1120',
+                            card: '#151F32',
+                            border: '#2A3853',
+                            accent: '#06B6D4', // Cyan 500
+                            accentGlow: '#0891B2',
+                            blue: '#3B82F6',
+                            highlight: '#F59E0B'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Sarabun', 'Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Sarabun', 'Inter', sans-serif;
+            background-color: #0B1120;
+            color: #E2E8F0;
+        }
+        .glass-panel {
+            background: rgba(21, 31, 50, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-panel-hover:hover {
+            border-color: rgba(6, 182, 212, 0.4);
+            box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.2);
+            transform: translateY(-2px);
+        }
+        .glow-text {
+            text-shadow: 0 0 15px rgba(6, 182, 212, 0.5);
+        }
+        .gradient-border {
+            position: relative;
+            border-radius: 1rem;
+            background: linear-gradient(135deg, rgba(6,182,212,0.5), rgba(59,130,246,0.1));
+            padding: 1px;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0B1120;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #1E293B;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #06B6D4;
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-slate-200 antialiased selection:bg-cyan-500 selection:text-slate-900 custom-scrollbar">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass-panel border-b border-slate-800/80 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo / Name -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-slate-900 font-bold text-xl shadow-lg shadow-cyan-500/20">
+                        KC
+                    </div>
+                    <div>
+                        <a href="#hero" class="text-lg font-bold tracking-tight text-white hover:text-cyan-400 transition">เขมณัฏฐ์ เชื้อวีระชน</a>
+                        <p class="text-xs text-cyan-400 font-mono tracking-wider">ENGINEERING PORTFOLIO</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#about" class="hover:text-cyan-400 transition text-slate-300">ประวัติส่วนตัว</a>
+                    <a href="#academic" class="hover:text-cyan-400 transition text-slate-300">ผลการเรียน & ทักษะ</a>
+                    <a href="#project" class="hover:text-cyan-400 transition text-slate-300">ผลงานเด่น</a>
+                    <a href="#honors" class="hover:text-cyan-400 transition text-slate-300">รางวัล & กิจกรรม</a>
+                    <a href="#sop" class="hover:text-cyan-400 transition text-slate-300">เป้าหมาย</a>
+                </div>
+
+                <!-- Contact Button -->
+                <div class="hidden md:block">
+                    <a href="#contact" class="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-semibold px-5 py-2.5 rounded-xl transition shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 transform hover:-translate-y-0.5">
+                        <i class="fa-solid fa-paper-plane text-xs"></i>
+                        <span>ติดต่อเรา</span>
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" type="button" class="text-slate-400 hover:text-white p-2 rounded-lg focus:outline-none" aria-label="Toggle Menu">
+                        <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div class="hidden md:hidden border-t border-slate-800 bg-brand-dark/95 backdrop-blur-xl px-4 pt-3 pb-6 space-y-3" id="mobile-menu">
+            <a href="#about" class="block px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition">ประวัติส่วนตัว</a>
+            <a href="#academic" class="block px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition">ผลการเรียน & ทักษะ</a>
+            <a href="#project" class="block px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition">ผลงานเด่น</a>
+            <a href="#honors" class="block px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition">รางวัล & กิจกรรม</a>
+            <a href="#sop" class="block px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition">เป้าหมาย</a>
+            <a href="#contact" class="block px-3 py-2 rounded-lg bg-cyan-500 text-slate-950 font-semibold text-center mt-2">ติดต่อเรา</a>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="pt-20">
+
+        <!-- HERO SECTION -->
+        <section id="hero" class="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-16 px-4 sm:px-6 lg:px-8">
+            <!-- Background Glow Effects -->
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+            <div class="absolute bottom-10 right-10 w-[350px] h-[350px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+                <!-- Text Content -->
+                <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel border-cyan-500/30 text-cyan-400 text-xs font-mono tracking-wide">
+                        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+                        <span>FACULTY OF ENGINEERING CANDIDATE (ROUND 1 PORTFOLIO)</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                        เด็กชายเขมณัฏฐ์ <br class="hidden sm:inline" />
+                        <span class="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent glow-text">เชื้อวีระชน</span>
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-slate-300 font-light max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        นักเรียนชั้นมัธยมศึกษาปีที่ 3 แผนการเรียนวิทยาศาสตร์-คณิตศาสตร์ <br class="hidden sm:inline" />
+                        ผู้มีความมุ่งมั่นพัฒนาเทคโนโลยี นวัตกรรม และโครงงานวิศวกรรมเพื่อแก้ไขปัญหาจริง
+                    </p>
+
+                    <!-- Stats Badges -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 max-w-lg mx-auto lg:mx-0">
+                        <div class="glass-panel p-4 rounded-2xl border-slate-800 text-center">
+                            <span class="block text-3xl font-extrabold text-cyan-400 font-mono">4.00</span>
+                            <span class="text-xs text-slate-400 mt-1 block">GPAX สะสม (ม.3)</span>
+                        </div>
+                        <div class="glass-panel p-4 rounded-2xl border-slate-800 text-center">
+                            <span class="block text-3xl font-extrabold text-amber-400 font-mono">1st</span>
+                            <span class="text-xs text-slate-400 mt-1 block">รางวัลชนะเลิศโครงงาน</span>
+                        </div>
+                        <div class="glass-panel p-4 rounded-2xl border-slate-800 text-center col-span-2 sm:col-span-1">
+                            <span class="block text-3xl font-extrabold text-blue-400 font-mono">วิทย์-คณิต</span>
+                            <span class="text-xs text-slate-400 mt-1 block">สายการเรียน</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#project" class="px-6 py-3.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold transition shadow-lg shadow-cyan-500/25 flex items-center gap-2">
+                            <span>สำรวจผลงานเด่น</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                        <a href="#sop" class="px-6 py-3.5 rounded-xl glass-panel hover:bg-slate-800/80 text-white font-semibold transition border-slate-700 flex items-center gap-2">
+                            <i class="fa-solid fa-compass text-cyan-400"></i>
+                            <span>เป้าหมายในอนาคต</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Student Avatar / Tech Illustration -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96">
+                        <!-- Orbiting Ring -->
+                        <div class="absolute inset-0 rounded-full border border-cyan-500/20 animate-[spin_20s_linear_infinite]"></div>
+                        <div class="absolute inset-4 rounded-full border border-blue-500/30 border-dashed animate-[spin_15s_linear_infinite_reverse]"></div>
+
+                        <!-- Image Container with Glass Backdrop -->
+                        <div class="w-full h-full rounded-3xl glass-panel p-4 border-cyan-500/30 shadow-2xl relative overflow-hidden flex flex-col items-center justify-center text-center">
+                            <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-gradient-to-tr from-cyan-500/20 to-blue-600/30 flex items-center justify-center border-2 border-cyan-400/50 mb-4 shadow-inner">
+                                <i class="fa-solid fa-user-gear text-6xl text-cyan-400"></i>
+                            </div>
+                            <span class="text-lg font-bold text-white">เขมณัฏฐ์ เชื้อวีระชน</span>
+                            <span class="text-xs text-cyan-400 font-mono mt-1">ม.3 | วิทย์-คณิต</span>
+                            <span class="mt-3 px-3 py-1 rounded-full text-[11px] bg-slate-800 text-slate-300 border border-slate-700">
+                                <i class="fa-solid fa-graduation-cap text-amber-400 mr-1"></i> ยื่นสมัครคณะวิศวกรรมศาสตร์
+                            </span>
+                        </div>
+
+                        <!-- Floating Badges -->
+                        <div class="absolute -top-3 -right-3 glass-panel px-4 py-2 rounded-xl border-cyan-500/40 text-xs font-mono text-cyan-300 flex items-center gap-2 shadow-lg animate-bounce">
+                            <i class="fa-solid fa-code text-cyan-400"></i>
+                            <span>Python / C++</span>
+                        </div>
+                        <div class="absolute -bottom-3 -left-3 glass-panel px-4 py-2 rounded-xl border-amber-500/40 text-xs font-mono text-amber-300 flex items-center gap-2 shadow-lg">
+                            <i class="fa-solid fa-trophy text-amber-400"></i>
+                            <span>Project Award Winner</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT ME SECTION -->
+        <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono tracking-widest text-cyan-400 uppercase mb-2">SECTION 01</h2>
+                <p class="text-3xl font-extrabold text-white sm:text-4xl">ประวัติส่วนตัว (About Me)</p>
+                <div class="w-16 h-1 bg-cyan-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Quote / Statement Card -->
+                <div class="lg:col-span-1 glass-panel p-8 rounded-3xl border-slate-800 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 transform translate-x-4 -translate-y-4 text-slate-800 opacity-30 pointer-events-none">
+                        <i class="fa-solid fa-quote-right text-9xl"></i>
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-xl mb-6 border border-cyan-500/20">
+                            <i class="fa-solid fa-microchip"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4">วิสัยทัศน์และความตั้งใจ</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed font-light">
+                            "มุ่งมั่นพัฒนาเทคโนโลยีและนวัตกรรม ผ่านกระบวนการคิดทางวิศวกรรมและทักษะการแก้ปัญหา นำความรู้ด้านคณิตศาสตร์และโปรแกรมมิ่งมาสร้างสรรค์เครื่องมือที่ช่วยพัฒนาสังคมอย่างยั่งยืน"
+                        </p>
+                    </div>
+                    <div class="pt-8 border-t border-slate-800/80 mt-6">
+                        <div class="text-xs text-slate-400 font-mono">แผนการเรียนปัจจุบัน</div>
+                        <div class="text-sm font-semibold text-cyan-400">วิทยาศาสตร์ - คณิตศาสตร์ (ชั้น ม.3)</div>
+                    </div>
+                </div>
+
+                <!-- Info Cards Grid -->
+                <div class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <!-- Card 1: Logic & Math -->
+                    <div class="glass-panel p-6 rounded-2xl border-slate-800 glass-panel-hover transition">
+                        <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 text-lg mb-4 border border-blue-500/20">
+                            <i class="fa-solid fa-square-root-variable"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">การคิดเชิงตรรกะและคณิตศาสตร์</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            วิชาที่ถนัดที่สุดคือ <span class="text-cyan-400 font-medium">คณิตศาสตร์</span> มีทักษะในการวิเคราะห์โครงสร้างตัวเลข การแก้โจทย์ที่ซับซ้อนอย่างมีระบบ และการคิดเชิงตรรกะเพื่อรองรับงานวิศวกรรม
+                        </p>
+                    </div>
+
+                    <!-- Card 2: Programming -->
+                    <div class="glass-panel p-6 rounded-2xl border-slate-800 glass-panel-hover transition">
+                        <div class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-lg mb-4 border border-cyan-500/20">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">ทักษะโปรแกรมมิ่ง & ควบคุมระบบ</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            สามารถเขียนโค้ดและพัฒนาซอฟต์แวร์ประยุกต์ เข้าใจหลักการเขียนโปรแกรมเชิงโครงสร้าง นำมาใช้ควบคุมระบบและสร้างฮาร์ดแวร์ในโครงงานวิศวกรรมได้จริง
+                        </p>
+                    </div>
+
+                    <!-- Card 3: English Fluency -->
+                    <div class="glass-panel p-6 rounded-2xl border-slate-800 glass-panel-hover transition">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 text-lg mb-4 border border-indigo-500/20">
+                            <i class="fa-solid fa-language"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">ทักษะการสื่อสารภาษาอังกฤษ</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            สื่อสารภาษาอังกฤษได้เป็นอย่างดี สามารถศึกษา ค้นคว้างานวิจัย เอกสารทางเทคนิค (Technical Documentation) และนำเสนอผลงานระดับสากลได้อย่างมั่นใจ
+                        </p>
+                    </div>
+
+                    <!-- Card 4: Engineering Design Process -->
+                    <div class="glass-panel p-6 rounded-2xl border-slate-800 glass-panel-hover transition">
+                        <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-400 text-lg mb-4 border border-amber-500/20">
+                            <i class="fa-solid fa-gears"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">กระบวนการคิดทางวิศวกรรม</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            เรียนรู้และประยุกต์ใช้ <span class="text-amber-400 font-medium">Engineering Design Process</span> เริ่มตั้งแต่ระบุปัญหา วิจัย ออกแบบ ทดสอบระบบ และปรับปรุงแก้ไขอย่างต่อเนื่อง
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ACADEMIC & SKILLS SECTION -->
+        <section id="academic" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-slate-900/40 rounded-3xl border border-slate-800/80 my-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono tracking-widest text-cyan-400 uppercase mb-2">SECTION 02</h2>
+                <p class="text-3xl font-extrabold text-white sm:text-4xl">ผลการเรียนและความสามารถ (Academic & Skills)</p>
+                <div class="w-16 h-1 bg-cyan-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Academic Stats -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="glass-panel p-8 rounded-3xl border-cyan-500/30 bg-gradient-to-b from-brand-card to-slate-900">
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-sm font-mono text-cyan-400">ACADEMIC EXCELLENCE</span>
+                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">ม.3 สายวิทย์-คณิต</span>
+                        </div>
+
+                        <div class="text-center my-6">
+                            <span class="text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-white font-mono">4.00</span>
+                            <p class="text-slate-400 text-sm font-medium mt-2">เกรดเฉลี่ยสะสม (GPAX)</p>
+                        </div>
+
+                        <div class="space-y-4 pt-6 border-t border-slate-800">
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-slate-300 flex items-center gap-2">
+                                    <i class="fa-solid fa-calculator text-cyan-400"></i> วิชาที่ถนัดที่สุด
+                                </span>
+                                <span class="font-bold text-white">คณิตศาสตร์ (4.00)</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-slate-300 flex items-center gap-2">
+                                    <i class="fa-solid fa-flask text-blue-400"></i> หมวดวิทยาศาสตร์
+                                </span>
+                                <span class="font-bold text-white">ดีเยี่ยม (4.00)</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-slate-300 flex items-center gap-2">
+                                    <i class="fa-solid fa-globe text-indigo-400"></i> หมวดภาษาต่างประเทศ
+                                </span>
+                                <span class="font-bold text-white">ดีเยี่ยม (4.00)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills Showcase -->
+                <div class="lg:col-span-7 glass-panel p-8 rounded-3xl border-slate-800 space-y-6">
+                    <h3 class="text-xl font-bold text-white flex items-center gap-3">
+                        <i class="fa-solid fa-layer-group text-cyan-400"></i>
+                        <span>ทักษะและความสามารถทางเทคนิค</span>
+                    </h3>
+
+                    <!-- Skill 1 -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <span class="font-semibold text-slate-200">คณิตศาสตร์และการตรรกศาสตร์ (Mathematics & Logic)</span>
+                            <span class="text-cyan-400 font-mono font-bold">100%</span>
+                        </div>
+                        <div class="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden">
+                            <div class="bg-gradient-to-r from-cyan-500 to-blue-500 h-2.5 rounded-full w-[100%]"></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill 2 -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <span class="font-semibold text-slate-200">ทักษะโปรแกรมมิ่ง (Python, C/C++)</span>
+                            <span class="text-cyan-400 font-mono font-bold">88%</span>
+                        </div>
+                        <div class="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden">
+                            <div class="bg-gradient-to-r from-cyan-500 to-blue-500 h-2.5 rounded-full w-[88%]"></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill 3 -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <span class="font-semibold text-slate-200">ภาษาอังกฤษเพื่อการสื่อสารและค้นคว้า (English Fluency)</span>
+                            <span class="text-cyan-400 font-mono font-bold">90%</span>
+                        </div>
+                        <div class="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden">
+                            <div class="bg-gradient-to-r from-cyan-500 to-blue-500 h-2.5 rounded-full w-[90%]"></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill 4 -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <span class="font-semibold text-slate-200">กระบวนการออกแบบทางวิศวกรรม (Engineering Design)</span>
+                            <span class="text-cyan-400 font-mono font-bold">85%</span>
+                        </div>
+                        <div class="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden">
+                            <div class="bg-gradient-to-r from-cyan-500 to-blue-500 h-2.5 rounded-full w-[85%]"></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill Badges -->
+                    <div class="pt-4 flex flex-wrap gap-2">
+                        <span class="px-3 py-1 rounded-lg bg-slate-800 text-slate-300 text-xs border border-slate-700">Problem Solving</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-800 text-slate-300 text-xs border border-slate-700">Algorithm Design</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-800 text-slate-300 text-xs border border-slate-700">Microcontroller / Embedded</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-800 text-slate-300 text-xs border border-slate-700">Team Collaboration</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURED PROJECT SECTION -->
+        <section id="project" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono tracking-widest text-cyan-400 uppercase mb-2">SECTION 03</h2>
+                <p class="text-3xl font-extrabold text-white sm:text-4xl">ผลงานเด่น (Featured Project)</p>
+                <p class="text-slate-400 mt-2 text-sm">การแก้ไขปัญหาผ่านกระบวนการทางวิศวกรรมจนได้รับรางวัลชนะเลิศอันดับ 1</p>
+                <div class="w-16 h-1 bg-cyan-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Main Project Storyline Card -->
+            <div class="glass-panel rounded-3xl border-slate-800 p-6 sm:p-10 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="flex flex-wrap items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-800">
+                    <div>
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                            <i class="fa-solid fa-trophy mr-1"></i> รางวัลชนะเลิศ อันดับ 1
+                        </span>
+                        <h3 class="text-2xl sm:text-3xl font-bold text-white mt-2">โครงงานวิศวกรรมและนวัตกรรมระบบควบคุมอัตโนมัติ</h3>
+                        <p class="text-slate-400 text-sm mt-1">Engineering & Embedded Systems Control Project</p>
+                    </div>
+                    <button onclick="openProjectModal()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-cyan-400 font-medium text-xs transition border border-slate-700 flex items-center gap-2">
+                        <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+                        <span>ขยายดูข้อมูลเชิงลึก</span>
+                    </button>
+                </div>
+
+                <!-- Step-by-Step Problem -> Action -> Result -> Learning -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Step 1: Problem -->
+                    <div class="glass-panel p-6 rounded-2xl border-rose-500/20 bg-slate-900/60 relative flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="w-8 h-8 rounded-lg bg-rose-500/10 text-rose-400 flex items-center justify-center font-bold text-sm border border-rose-500/20">01</span>
+                                <i class="fa-solid fa-triangle-exclamation text-rose-400 text-lg"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white mb-2">ปัญหา (Problem)</h4>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                พบปัญหาความซับซ้อน ความล่าช้า และการขาดประสิทธิภาพในระบบควบคุมเดิม ซึ่งส่งผลกระทบต่อความแม่นยำและการใช้งานจริง
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-800 text-xs text-rose-300/80">
+                            * ข้อจำกัดของระบบแบบดั้งเดิม
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Action -->
+                    <div class="glass-panel p-6 rounded-2xl border-cyan-500/20 bg-slate-900/60 relative flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center font-bold text-sm border border-cyan-500/20">02</span>
+                                <i class="fa-solid fa-screwdriver-wrench text-cyan-400 text-lg"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white mb-2">สิ่งที่ทำ (Action)</h4>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                ออกแบบโครงสร้างวิศวกรรม เขียนโปรแกรมควบคุมระบบ (Programming Control) ร่วมมือกับทีมในการทดลองและปรับปรุงประสิทธิภาพ
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-800 text-xs text-cyan-300/80">
+                            * ออกแบบ โค้ดดิ้ง และประกอบระบบ
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Result -->
+                    <div class="glass-panel p-6 rounded-2xl border-emerald-500/20 bg-slate-900/60 relative flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold text-sm border border-emerald-500/20">03</span>
+                                <i class="fa-solid fa-square-check text-emerald-400 text-lg"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white mb-2">ผลลัพธ์ (Result)</h4>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                โครงงานทำงานได้สมบูรณ์ เพิ่มความแม่นยำและเสถียรภาพ และได้รับ <span class="text-emerald-400 font-bold">รางวัลชนะเลิศอันดับ 1</span> จากการแข่งขัน
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-800 text-xs text-emerald-300/80">
+                            * ได้รับรางวัลอันดับ 1
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Learning -->
+                    <div class="glass-panel p-6 rounded-2xl border-amber-500/20 bg-slate-900/60 relative flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold text-sm border border-amber-500/20">04</span>
+                                <i class="fa-solid fa-brain text-amber-400 text-lg"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white mb-2">สิ่งที่ได้เรียนรู้ (Learning)</h4>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                ฝึกฝน <span class="text-amber-400 font-medium">Engineering Design Process</span> ทักษะการแก้ปัญหาเฉพาะหน้า การทำงานร่วมกับผู้อื่นอย่างเป็นระบบ
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-800 text-xs text-amber-300/80">
+                            * ต่อยอดทักษะวิศวกรจริง
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HONORS & ACTIVITIES SECTION -->
+        <section id="honors" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono tracking-widest text-cyan-400 uppercase mb-2">SECTION 04</h2>
+                <p class="text-3xl font-extrabold text-white sm:text-4xl">รางวัลและกิจกรรม (Honors & Activities)</p>
+                <div class="w-16 h-1 bg-cyan-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Honors Card -->
+                <div class="glass-panel p-8 rounded-3xl border-slate-800 relative">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-500/10 flex items-center justify-center text-amber-400 text-2xl border border-amber-500/20">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">รางวัลและความสำเร็จ</h3>
+                            <p class="text-xs text-slate-400">Awards & Recognition</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="glass-panel p-5 rounded-2xl border-amber-500/30 bg-amber-500/5">
+                            <div class="flex justify-between items-start">
+                                <span class="text-xs font-mono text-amber-400 font-semibold">1st PLACE WINNER</span>
+                                <i class="fa-solid fa-medal text-amber-400"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white mt-1">รางวัลชนะเลิศ อันดับ 1 การแข่งขันโครงงานวิศวกรรม</h4>
+                            <p class="text-slate-300 text-sm mt-2">
+                                ได้รับรางวัลชนะเลิศอันดับ 1 จากการแข่งขันเสนอโครงงานนวัตกรรมและการประยุกต์ใช้ทักษะทางวิศวกรรมร่วมกับเทคโนโลยี
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activities & Experiences Card -->
+                <div class="glass-panel p-8 rounded-3xl border-slate-800">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-400 text-2xl border border-blue-500/20">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">ประสบการณ์และการแข่งขัน</h3>
+                            <p class="text-xs text-slate-400">Extracurricular Experiences</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+                            <h4 class="font-bold text-slate-200 text-sm">การแข่งขันทางวิชาการและโปรแกรมมิ่ง</h4>
+                            <p class="text-xs text-slate-400 mt-1">
+                                เข้าร่วมการแข่งขันวัดทักษะคณิตศาสตร์ โปรแกรมมิ่ง และกระบวนการคิดเชิงวิศวกรรมอย่างต่อเนื่อง เพื่อฝึกฝนทักษะการทำงานภายใต้แรงกดดัน
+                            </p>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+                            <h4 class="font-bold text-slate-200 text-sm">กิจกรรมการทดลองและค่ายวิศวกรรม</h4>
+                            <p class="text-xs text-slate-400 mt-1">
+                                เข้าร่วมกิจกรรมเชิงปฏิบัติการด้านวิทยาศาสตร์และนวัตกรรม พัฒนาทักษะการทำงานเป็นทีมและภาวะผู้นำ
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STATEMENT OF PURPOSE SECTION -->
+        <section id="sop" class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+            <div class="glass-panel p-8 sm:p-12 rounded-3xl border-cyan-500/30 relative overflow-hidden bg-gradient-to-br from-brand-card via-slate-900 to-brand-dark">
+                <div class="absolute -top-10 -right-10 w-60 h-60 bg-cyan-500/10 rounded-full blur-3xl"></div>
+
+                <div class="text-center max-w-2xl mx-auto mb-10">
+                    <span class="text-xs font-mono text-cyan-400 tracking-widest uppercase">STATEMENT OF PURPOSE</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-2">แรงบันดาลใจและเป้าหมายในอนาคต</h2>
+                    <div class="w-12 h-1 bg-cyan-500 mx-auto mt-3 rounded-full"></div>
+                </div>
+
+                <div class="space-y-6 text-slate-300 text-sm sm:text-base leading-relaxed font-light">
+                    <p class="indent-6">
+                        ด้วยความหลงใหลในวิชาคณิตศาสตร์และกระบวนการคิดทางเทคโนโลยี ผสมผสานกับการได้ลงมือปฏิบัติจริงในการทำโครงงานวิศวกรรมจนได้รับรางวัลชนะเลิศอันดับ 1 ทำให้ข้าพเจ้าประจักษ์ถึงพลังของการนำความรู้ทางคณิตศาสตร์และการเขียนโปรแกรมมาประยุกต์สร้างสิ่งประดิษฐ์ที่ช่วยแก้ไขปัญหาจริงในชีวิตประจำวัน
+                    </p>
+                    <p class="indent-6">
+                        ข้าพเจ้ามีความตั้งใจและเป้าหมายอย่างแน่วแน่ในการเข้าศึกษาต่อใน <span class="text-cyan-400 font-semibold">คณะวิศวกรรมศาสตร์</span> เพื่อมุ่งมั่นศึกษาเรียนรู้เชิงลึก พัฒนาศักยภาพด้านทักษะทางวิศวกรรมศาสตร์ที่ทันสมัย และฝึกฝนการคิดค้นนวัตกรรมระดับสูง
+                    </p>
+                    <p class="indent-6">
+                        ข้าพเจ้าพร้อมที่จะนำทักษะ ความรู้ ความมุ่งมั่น และประสบการณ์ทั้งหมดมาต่อยอดในระดับอุดมศึกษา เพื่อเติบโตเป็นวิศวกรที่มีคุณภาพและสร้างสรรค์ประโยชน์ให้แก่สังคมและประเทศชาติต่อไปในอนาคต
+                    </p>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-slate-800 flex flex-wrap items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold text-sm">
+                            KC
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold text-white">เขมณัฏฐ์ เชื้อวีระชน</div>
+                            <div class="text-xs text-slate-400">นักเรียนชั้นมัธยมศึกษาปีที่ 3</div>
+                        </div>
+                    </div>
+                    <span class="text-xs font-mono text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">
+                        #FutureEngineer
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono tracking-widest text-cyan-400 uppercase mb-2">SECTION 05</h2>
+                <p class="text-3xl font-extrabold text-white sm:text-4xl">ช่องทางการติดต่อ (Contact Information)</p>
+                <div class="w-16 h-1 bg-cyan-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Info Placeholders Card -->
+                <div class="lg:col-span-5 glass-panel p-8 rounded-3xl border-slate-800 space-y-6">
+                    <h3 class="text-xl font-bold text-white mb-4">ข้อมูลการติดต่อ</h3>
+
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4 p-4 rounded-2xl bg-slate-900/60 border border-slate-800">
+                            <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-slate-400 block">ชื่อ-นามสกุล</span>
+                                <span class="text-sm font-semibold text-white">เด็กชายเขมณัฏฐ์ เชื้อวีระชน</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-4 rounded-2xl bg-slate-900/60 border border-slate-800">
+                            <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-slate-400 block">เบอร์โทรศัพท์</span>
+                                <span class="text-sm font-semibold text-white">[ระบุเบอร์โทรศัพท์]</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-4 rounded-2xl bg-slate-900/60 border border-slate-800">
+                            <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-slate-400 block">อีเมล</span>
+                                <span class="text-sm font-semibold text-white">[ระบุอีเมลติดต่อ]</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-4 rounded-2xl bg-slate-900/60 border border-slate-800">
+                            <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-school"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-slate-400 block">โรงเรียนปัจจุบัน</span>
+                                <span class="text-sm font-semibold text-white">[ระบุชื่อโรงเรียน]</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Interactive Form Placeholder -->
+                <div class="lg:col-span-7 glass-panel p-8 rounded-3xl border-slate-800">
+                    <h3 class="text-xl font-bold text-white mb-2">ฝากข้อความ / ติดต่อสอบถาม</h3>
+                    <p class="text-xs text-slate-400 mb-6">กรอกแบบฟอร์มด้านล่างเพื่อส่งข้อความถึงนักเรียน</p>
+
+                    <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs text-slate-300 font-medium mb-1">ชื่อผู้ติดต่อ</label>
+                                <input type="text" required placeholder="เช่น อ.สมชาย ใจดี" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-500 transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-slate-300 font-medium mb-1">อีเมลผู้ติดต่อ</label>
+                                <input type="email" required placeholder="example@email.com" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-500 transition">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs text-slate-300 font-medium mb-1">หัวข้อ</label>
+                            <input type="text" required placeholder="เรื่องที่ต้องการติดต่อ" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-500 transition">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs text-slate-300 font-medium mb-1">ข้อความ</label>
+                            <textarea rows="4" required placeholder="รายละเอียดข้อความ..." class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-500 transition resize-none"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold rounded-xl transition shadow-lg shadow-cyan-500/20">
+                            ส่งข้อความ
+                        </button>
+                    </form>
+
+                    <!-- Feedback message box -->
+                    <div id="formSuccessMessage" class="hidden mt-4 p-4 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs text-center">
+                        <i class="fa-solid fa-circle-check mr-2"></i> ข้อความของคุณถูกส่งเรียบร้อยแล้ว ขอบคุณสำหรับการติดต่อ!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-800 py-8 bg-brand-dark">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-xs text-slate-500">
+                &copy; 2026 Khemmanat Chueawerachon. Portfolio prepared for Admission to the Faculty of Engineering.
+            </p>
+        </div>
+    </footer>
+
+    <!-- MODAL FOR PROJECT DETAILS -->
+    <div id="projectModal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="glass-panel max-w-2xl w-full rounded-3xl border-cyan-500/40 p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto custom-scrollbar">
+            <button onclick="closeProjectModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <div class="flex items-center gap-2 text-cyan-400 font-mono text-xs mb-2">
+                <i class="fa-solid fa-microchip"></i>
+                <span>PROJECT DEEP DIVE</span>
+            </div>
+
+            <h3 class="text-2xl font-bold text-white mb-4">รายละเอียดเชิงลึกโครงงานวิศวกรรม</h3>
+
+            <div class="space-y-4 text-slate-300 text-sm">
+                <p>
+                    <strong class="text-white">เครื่องมือและเทคโนโลยีที่ใช้:</strong> Microcontroller, C/C++ Embedded Programming, Python for Data Analysis, Sensors & Actuators
+                </p>
+                <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+                    <h4 class="font-bold text-cyan-400 mb-1">สรุปสาระสำคัญ:</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        โครงงานนี้ริเริ่มขึ้นจากการค้นพบข้อจำกัดของระบบเดิม นำเอาความรู้ทางวิศวกรรม การคำนวณวงจรทางไฟฟ้า และการออกแบบโค้ดอย่างมีประสิทธิภาพ เพื่อสร้างต้นแบบที่สามารถแก้ปัญหาได้จริง ผ่านกระบวนการทดลองและแก้ไขปัญหาอย่างต่อเนื่อง
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-6 flex justify-end">
+                <button onclick="closeProjectModal()" class="px-5 py-2 rounded-xl bg-cyan-500 text-slate-950 font-bold text-xs">
+                    ปิดหน้าต่าง
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Interactions -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            }
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+
+        // Project Modal
+        function openProjectModal() {
+            document.getElementById('projectModal').classList.remove('hidden');
+        }
+
+        function closeProjectModal() {
+            document.getElementById('projectModal').classList.add('hidden');
+        }
+
+        // Contact Form Submission Handler
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const msg = document.getElementById('formSuccessMessage');
+            msg.classList.remove('hidden');
+            document.getElementById('contactForm').reset();
+            setTimeout(() => {
+                msg.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
